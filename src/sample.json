@@ -1,0 +1,35 @@
+{
+    "friends": [
+        "Keane",
+        "Phuong",
+        "Brandon",
+        "Patrick",
+        "Leandra"
+    ],
+    "purchases": [
+        {
+            "id": "001",
+            "name": "LCBO",
+            "amount": 7500,
+            "spender": "Keane"
+        },
+        {
+            "id": "002",
+            "name": "Loblaws",
+            "amount": 3287,
+            "spender": "Patrick"
+        },
+        {
+            "id": "003",
+            "name": "McDonalds",
+            "amount": 2625,
+            "spender": "Keane"
+        },
+        {
+            "id": "004",
+            "name": "Ice cream cake",
+            "amount": 3000,
+            "spender": "Brandon"
+        }
+    ]
+}
