@@ -1,0 +1,8 @@
+.calculation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculation>.negative {
+    color: rgba(200, 0, 0, 1);
+}
