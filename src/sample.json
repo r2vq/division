@@ -11,25 +11,29 @@
             "id": "001",
             "name": "LCBO",
             "amount": 7500,
-            "spender": "Keane"
+            "spender": "Keane",
+            "exceptions": []
         },
         {
             "id": "002",
             "name": "Loblaws",
             "amount": 3287,
-            "spender": "Patrick"
+            "spender": "Patrick",
+            "exceptions": []
         },
         {
             "id": "003",
             "name": "McDonalds",
             "amount": 2625,
-            "spender": "Keane"
+            "spender": "Keane",
+            "exceptions": ["Leandra"]
         },
         {
             "id": "004",
             "name": "Ice cream cake",
             "amount": 3000,
-            "spender": "Brandon"
+            "spender": "Brandon",
+            "exceptions": []
         }
     ]
 }

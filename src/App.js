@@ -22,6 +22,10 @@ function App() {
           />
         ))}
       </div>
+      <Calculator
+        purchases={purchases}
+        friends={friends}
+      />
     </>
   );
 }
