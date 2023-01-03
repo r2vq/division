@@ -99,7 +99,8 @@ function App() {
         onSelect={onSelect}
       />
       {
-        isAddingPurchase ?
+        friends.length < 2 ||
+        (isAddingPurchase ?
           <PurchaseAdder
             onAdd={onPurchaseAdderAdd}
             onCancel={onPurchaseAdderCancel}
@@ -107,7 +108,7 @@ function App() {
           /> :
           <PurchaseAdderButton
             onClick={onPurchaseAdderClick}
-          />
+          />)
       }
 
       <Calculator
