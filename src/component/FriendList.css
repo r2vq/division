@@ -10,6 +10,19 @@
     padding: 20px;
 }
 
+.friendList>.addButton {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    font-size: large;
+    margin: 10px 0;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.friendList .editName {
+    display: flex;
+}
+
 .friendList>.header {
     font-size: large;
     font-weight: 500;
@@ -21,7 +34,7 @@
     padding: 10px 0;
 }
 
-.friendListItem>.control {
+.friendList .control {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     margin: 0 10px;

@@ -24,6 +24,10 @@ function App() {
     );
   }, []);
 
+  function onAddFriend(friend) {
+    setFriends([...friends, friend]);
+  }
+
   function onDelete(purchase) {
     setPurchases(purchases.filter(
       current => current.id !== purchase.id
@@ -67,6 +71,7 @@ function App() {
     <>
       <FriendList
         friends={friends}
+        onAddFriend={onAddFriend}
         onDeleteFriend={onDeleteFriend}
         onEditFriend={onEditFriend}
       />
