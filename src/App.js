@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Calculator from './component/Calculator';
-import Purchase from './component/Purchase';
+import PurchaseList from './component/PurchaseList';
 import sample from "./sample.json";
 
 function App() {
@@ -52,21 +52,12 @@ function App() {
 
   return (
     <>
-      <div className="purchases">
-        {purchases.map(purchase => (
-          <Purchase
-            key={purchase.id}
-            name={purchase.name}
-            amount={purchase.amount}
-            spender={purchase.spender}
-            exceptions={purchase.exceptions}
-            isSelected={purchase.isSelected}
-            setSelected={() => onSelect(purchase)}
-            onClickEdit={() => onEdit(purchase)}
-            onClickDelete={() => onDelete(purchase)}
-          />
-        ))}
-      </div>
+      <PurchaseList
+        purchases={purchases}
+        onDelete={onDelete}
+        onEdit={onEdit}
+        onSelect={onSelect}
+      />
       <Calculator
         purchases={purchases}
         friends={friends}
