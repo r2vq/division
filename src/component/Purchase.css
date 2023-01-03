@@ -1,25 +1,68 @@
 .purchase-item {
+    border-radius: 4px;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3),
         2px 2px 2px rgba(0, 0, 0, 0.3),
         3px 3px 3px rgba(0, 0, 0, 0.3),
         4px 4px 9px rgba(0, 0, 0, 0.3);
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    justify-items: stretch;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
 }
 
-.purchase-item>.spender {
-    font-size: smaller;
+.purchase-item .amount {
+    font-size: large;
+    font-weight: 700;
+    text-align: flex-end;
 }
 
-.purchase-item>.name {
+.purchase-item .controls {
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.purchase-item .exceptions {
+    margin: 10px 0;
+}
+
+.purchase-item .exceptions .header {
+    font-size: medium;
+    font-weight: 500;
+}
+
+.purchase-item .name {
     font-size: large;
     font-weight: 500;
 }
 
-.purchase-item>.amount {
-    font-size: large;
-    font-weight: 700;
-    text-align: end;
+.purchase-item .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.purchase-item .bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchase-item.hidden .bottom {
+    display: none;
+}
+
+.purchase-item .spender, .purchase-item .exception {
+    font-size: smaller;
+}
+
+.purchase-item .top {
+    display: flex;
+    flex-direction: row;
+}
+
+.purchase-item .top .left {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
