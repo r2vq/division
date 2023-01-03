@@ -5,6 +5,22 @@ function PurchaseAdder({ onAdd, onCancel, spenders }) {
     const [purchaseState, setPurchaseState] = useState("");
     const [spenderState, setSpenderState] = useState(spenders.length > 0 ? spenders[0] : "");
     const [amountState, setAmountState] = useState("");
+    const [excludedState, setExcludedState] = useState([]);
+
+    function onUpdateExcludedState(name, excluded) {
+        const index = excludedState.indexOf(name);
+        if (!excluded) {
+            if (index < 0) {
+                setExcludedState([...excludedState, name]);
+            }
+        } else {
+            if (index >= 0) {
+                setExcludedState(excludedState.filter(
+                    current => current !== name
+                ));
+            }
+        }
+    }
 
     function onUpdatePurchaseState(e) {
         setPurchaseState(e.target.value);
@@ -36,7 +52,12 @@ function PurchaseAdder({ onAdd, onCancel, spenders }) {
             return;
         }
 
-        onAdd(purchaseState, spenderState, Math.floor(amountState * 100));
+        if (excludedState.length >= spenders.length) {
+            window.alert("Somebody has to pay for this...");
+            return;
+        }
+
+        onAdd(purchaseState, spenderState, Math.floor(amountState * 100), excludedState);
     }
 
     return (
@@ -59,6 +80,10 @@ function PurchaseAdder({ onAdd, onCancel, spenders }) {
                 placeholder="Amount"
                 value={amountState}
             />
+            <ExcludedList
+                excluded={excludedState}
+                onExclude={onUpdateExcludedState}
+                spenders={spenders} />
             <div
                 className="control"
                 onClick={onSaveClick}>
@@ -69,6 +94,33 @@ function PurchaseAdder({ onAdd, onCancel, spenders }) {
                 onClick={onCancel}>
                 Cancel
             </div>
+        </div>
+    );
+}
+
+function ExcludedList({ spenders, excluded, onExclude }) {
+    function handleChange(e, spender) {
+        e.stopPropagation();
+        onExclude(spender, excluded.indexOf(spender) >= 0);
+    }
+
+    return (
+        <div className="excludedList">
+            <div className="header">Pitching In (for this purchase):</div>
+            {
+                spenders.map(spender => (
+                    <div
+                        key={spender}
+                        onClick={(e) => { handleChange(e, spender) }}>
+                        <input
+                            type="checkbox"
+                            checked={excluded.indexOf(spender) < 0}
+                            onChange={(e) => { handleChange(e, spender) }}
+                        />
+                        {spender}
+                    </div>
+                ))
+            }
         </div>
     );
 }

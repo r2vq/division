@@ -54,13 +54,13 @@ function App() {
     ))
   }
 
-  function onPurchaseAdderAdd(name, spender, amount) {
+  function onPurchaseAdderAdd(name, spender, amount, exceptions) {
     setPurchases([...purchases, {
       "id": uuid(),
       "name": name,
       "spender": spender,
       "amount": amount,
-      "exceptions": []
+      "exceptions": exceptions
     }]);
     setAddingPurchase(false);
   }
