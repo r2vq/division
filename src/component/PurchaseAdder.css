@@ -1,0 +1,31 @@
+.purchaseAdder {
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3),
+        2px 2px 2px rgba(0, 0, 0, 0.3),
+        3px 3px 3px rgba(0, 0, 0, 0.3),
+        4px 4px 9px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+}
+
+.purchaseAdder>.control {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: large;
+    margin: 10px 0;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.purchaseAdder>input {
+    margin: 10px;
+    padding: 5px;
+}
+
+.purchaseAdder>select {
+    margin: 10px;
+    padding: 5px;
+}

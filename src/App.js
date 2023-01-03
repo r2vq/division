@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
+import uuid from 'react-uuid';
 import './App.css';
 import Calculator from './component/Calculator';
 import FriendList from './component/FriendList';
+import PurchaseAdder from './component/PurchaseAdder';
+import PurchaseAdderButton from './component/PurchaseAdderButton';
 import PurchaseList from './component/PurchaseList';
 import sample from "./sample.json";
 
 function App() {
   const [friends, setFriends] = useState([]);
   const [purchases, setPurchases] = useState([]);
+  const [isAddingPurchase, setAddingPurchase] = useState(false);
 
   useEffect(() => {
     setFriends(sample.friends);
@@ -66,6 +70,25 @@ function App() {
     ))
   }
 
+  function onPurchaseAdderAdd(name, spender, amount) {
+    setPurchases([...purchases, {
+      "id": uuid(),
+      "name": name,
+      "spender": spender,
+      "amount": amount,
+      "exceptions": []
+    }]);
+    setAddingPurchase(false);
+  }
+
+  function onPurchaseAdderCancel() {
+    setAddingPurchase(false);
+  }
+
+  function onPurchaseAdderClick() {
+    setAddingPurchase(true);
+  }
+
   function onSelect(purchase) {
     setPurchases(purchases.mapIf(
       current => ({
@@ -91,6 +114,18 @@ function App() {
         onEdit={onEdit}
         onSelect={onSelect}
       />
+      {
+        isAddingPurchase ?
+          <PurchaseAdder
+            onAdd={onPurchaseAdderAdd}
+            onCancel={onPurchaseAdderCancel}
+            spenders={friends}
+          /> :
+          <PurchaseAdderButton
+            onClick={onPurchaseAdderClick}
+          />
+      }
+
       <Calculator
         purchases={purchases}
         friends={friends}
