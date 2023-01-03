@@ -6,10 +6,11 @@ import FriendList from './component/FriendList';
 import PurchaseAdder from './component/PurchaseAdder';
 import PurchaseAdderButton from './component/PurchaseAdderButton';
 import PurchaseList from './component/PurchaseList';
+import useLocalStorage from './hooks/UseLocalStorage';
 
 function App() {
-  const [friends, setFriends] = useState([]);
-  const [purchases, setPurchases] = useState([]);
+  const [friends, setFriends] = useLocalStorage("friends", []);
+  const [purchases, setPurchases] = useLocalStorage("purchases", []);
   const [isAddingPurchase, setAddingPurchase] = useState(false);
 
   function onAddFriend(friend) {
