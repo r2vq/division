@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./FriendList.css";
 
 function FriendList({ friends, onAddFriend, onDeleteFriend, onEditFriend }) {
     const [isAdding, setAdding] = useState(false);
+    const [editName, setEditName] = useState("");
 
     function onAdd(name) {
         if (friends.indexOf(name) < 0) {
@@ -13,23 +14,40 @@ function FriendList({ friends, onAddFriend, onDeleteFriend, onEditFriend }) {
         }
     }
 
+    function onEdit(oldName, newName) {
+        onEditFriend(oldName, newName);
+        setEditName("");
+    }
+
     function onCancel() {
         setAdding(false);
+    }
+
+    function onCancelEdit() {
+        setEditName("");
     }
 
     return (
         <div className="friendList">
             <div className="header">Friends</div>
             {friends.map(friend => (
-                <FriendListItem
-                    key={friend}
-                    onDeleteFriend={onDeleteFriend}
-                    onEditFriend={onEditFriend}>
-                    {friend}
-                </FriendListItem>
+                editName === friend ?
+                    <FriendListAdder
+                        key={friend}
+                        buttonText="Save"
+                        defaultName={friend}
+                        onAdd={newName => { onEdit(friend, newName) }}
+                        onCancel={onCancelEdit} /> :
+                    <FriendListItem
+                        key={friend}
+                        onDeleteFriend={onDeleteFriend}
+                        onEditFriend={setEditName}>
+                        {friend}
+                    </FriendListItem>
             ))}
             {isAdding && (
                 <FriendListAdder
+                    buttonText="Add"
                     onAdd={onAdd}
                     onCancel={onCancel} />
             )}
@@ -45,24 +63,29 @@ function FriendList({ friends, onAddFriend, onDeleteFriend, onEditFriend }) {
     );
 }
 
-function FriendListAdder({ onAdd, onCancel }) {
-    const editNameInput = useRef();
+function FriendListAdder({ buttonText, defaultName, onAdd, onCancel }) {
+    const [editNameValue, setEditNameValue] = useState(defaultName || "");
+    function handleChange(event) {
+        setEditNameValue(event.target.value);
+    }
+
     return <div className="editName">
         <input
+            value={editNameValue}
             className="editNameInput"
-            ref={editNameInput} />
+            onChange={handleChange} />
         <div
             onClick={(e) => {
                 e.stopPropagation();
-                onAdd(editNameInput.current.value)
-                editNameInput.current.value = "";
+                onAdd(editNameValue)
+                setEditNameValue("");
             }}
-            className="control add">Add</div>
+            className="control add">{buttonText}</div>
         <div
             onClick={(e) => {
                 e.stopPropagation();
                 onCancel()
-                editNameInput.current.value = "";
+                setEditNameValue("");
             }}
             className="control cancel">Cancel</div>
     </div>;

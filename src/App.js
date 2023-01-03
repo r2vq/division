@@ -52,8 +52,18 @@ function App() {
     ));
   }
 
-  function onEditFriend(friend) {
-    window.alert(`Not implemented yet. Please delete ${friend} and re-add.`);
+  function onEditFriend(oldName, newName) {
+    setPurchases(purchases.mapIf(
+      current => ({
+        ...current,
+        spender: newName
+      }),
+      current => current.spender === oldName
+    ));
+    setFriends(friends.mapIf(
+      () => newName,
+      current => current === oldName
+    ))
   }
 
   function onSelect(purchase) {

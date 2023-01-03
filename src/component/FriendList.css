@@ -13,14 +13,24 @@
 .friendList>.addButton {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
+    cursor: pointer;
     font-size: large;
     margin: 10px 0;
     padding: 20px 10px;
     text-align: center;
 }
 
+.friendList>.addButton:hover {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
 .friendList .editName {
     display: flex;
+    margin: 8.5px 0;
+}
+
+.friendList .editName .editNameInput {
+    flex-grow: 1;
 }
 
 .friendList>.header {
@@ -37,8 +47,13 @@
 .friendList .control {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
+    cursor: pointer;
     margin: 0 10px;
     padding: 5px 10px;
+}
+
+.friendList .control:hover {
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .friendListItem>.name {
