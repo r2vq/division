@@ -2,6 +2,7 @@ import { useState } from 'react';
 import uuid from 'react-uuid';
 import './App.css';
 import Calculator from './component/Calculator';
+import DeleteAllButton from './component/DeleteAllButton';
 import FriendList from './component/FriendList';
 import PurchaseAdder from './component/PurchaseAdder';
 import PurchaseAdderButton from './component/PurchaseAdderButton';
@@ -21,6 +22,12 @@ function App() {
     setPurchases(purchases.filter(
       current => current.id !== purchase.id
     ));
+  }
+
+  function onDeleteAll() {
+    setPurchases([]);
+    setFriends([]);
+    setAddingPurchase(false);
   }
 
   function onDeleteFriend(friend) {
@@ -115,6 +122,10 @@ function App() {
       <Calculator
         purchases={purchases}
         friends={friends}
+      />
+
+      <DeleteAllButton
+        onDeleteAll={onDeleteAll}
       />
     </div>
   );
