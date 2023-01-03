@@ -78,7 +78,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container">
       <FriendList
         friends={friends}
         onAddFriend={onAddFriend}
@@ -95,7 +95,7 @@ function App() {
         purchases={purchases}
         friends={friends}
       />
-    </>
+    </div>
   );
 }
 
