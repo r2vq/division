@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./PurchaseAdder.css";
 
-function PurchaseAdder({ onAdd, onCancel, spenders }) {
-    const [purchaseState, setPurchaseState] = useState("");
-    const [spenderState, setSpenderState] = useState(spenders.length > 0 ? spenders[0] : "");
-    const [amountState, setAmountState] = useState("");
-    const [excludedState, setExcludedState] = useState([]);
+function PurchaseAdder({ defaultAmount, defaultExcluded, defaultPurchase, defaultSpender, onAdd, onCancel, spenders }) {
+    const [purchaseState, setPurchaseState] = useState(defaultPurchase || "");
+    const [spenderState, setSpenderState] = useState(defaultSpender || (spenders.length > 0 ? spenders[0] : ""));
+    const [amountState, setAmountState] = useState((defaultAmount / 100) || "");
+    const [excludedState, setExcludedState] = useState(defaultExcluded || []);
 
     function onUpdateExcludedState(name, excluded) {
         const index = excludedState.indexOf(name);

@@ -15,14 +15,6 @@
     text-align: flex-end;
 }
 
-.purchase-item .controls {
-    justify-content: flex-end;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin: 10px 0;
-}
-
 .purchase-item .exceptions {
     margin: 10px 0;
 }

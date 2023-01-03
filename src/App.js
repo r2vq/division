@@ -38,11 +38,21 @@ function App() {
     }
   }
 
-  function onEdit(purchase) {
+  function onEdit(purchase, isEditing) {
     setPurchases(purchases.mapIf(
       current => ({
         ...current,
-        isEditing: true
+        isEditing: isEditing
+      }),
+      current => current.id === purchase.id
+    ));
+  }
+
+  function onEditComplete(purchase) {
+    setPurchases(purchases.mapIf(
+      () => ({
+        ...purchase,
+        isEditing: false
       }),
       current => current.id === purchase.id
     ));
@@ -101,9 +111,11 @@ function App() {
         onEditFriend={onEditFriend}
       />
       <PurchaseList
+        friends={friends}
         purchases={purchases}
         onDelete={onDelete}
         onEdit={onEdit}
+        onEditComplete={onEditComplete}
         onSelect={onSelect}
       />
       {
