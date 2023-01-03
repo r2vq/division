@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import uuid from 'react-uuid';
 import './App.css';
 import Calculator from './component/Calculator';
@@ -6,27 +6,11 @@ import FriendList from './component/FriendList';
 import PurchaseAdder from './component/PurchaseAdder';
 import PurchaseAdderButton from './component/PurchaseAdderButton';
 import PurchaseList from './component/PurchaseList';
-import sample from "./sample.json";
 
 function App() {
   const [friends, setFriends] = useState([]);
   const [purchases, setPurchases] = useState([]);
   const [isAddingPurchase, setAddingPurchase] = useState(false);
-
-  useEffect(() => {
-    setFriends(sample.friends);
-    setPurchases(
-      sample
-        .purchases
-        .map(purchase => {
-          return {
-            isSelected: false,
-            isEditing: false,
-            ...purchase
-          };
-        })
-    );
-  }, []);
 
   function onAddFriend(friend) {
     setFriends([...friends, friend]);
