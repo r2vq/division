@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Calculator from './component/Calculator';
+import FriendList from './component/FriendList';
 import PurchaseList from './component/PurchaseList';
 import sample from "./sample.json";
 
@@ -29,6 +30,14 @@ function App() {
     ));
   }
 
+  function onDeleteFriend(friend) {
+    const confirmation = window.confirm(`Delete ${friend}? This will remove all their expenses too.`);
+    if (confirmation) {
+      setPurchases(purchases.filter(purchase => purchase.spender !== friend));
+      setFriends(friends.filter(current => current !== friend));
+    }
+  }
+
   function onEdit(purchase) {
     setPurchases(purchases.mapIf(
       current => ({
@@ -37,6 +46,10 @@ function App() {
       }),
       current => current.id === purchase.id
     ));
+  }
+
+  function onEditFriend(friend) {
+    window.alert(`Not implemented yet. Please delete ${friend} and re-add.`);
   }
 
   function onSelect(purchase) {
@@ -52,6 +65,11 @@ function App() {
 
   return (
     <>
+      <FriendList
+        friends={friends}
+        onDeleteFriend={onDeleteFriend}
+        onEditFriend={onEditFriend}
+      />
       <PurchaseList
         purchases={purchases}
         onDelete={onDelete}
