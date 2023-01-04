@@ -131,10 +131,13 @@ function App() {
           />)
       }
 
-      <Calculator
-        purchases={purchases}
-        friends={friends}
-      />
+      {
+        purchases.length > 0 &&
+        <Calculator
+          purchases={purchases}
+          friends={friends}
+        />
+      }
 
       <DeleteAllButton
         onDeleteAll={onDeleteAll}
