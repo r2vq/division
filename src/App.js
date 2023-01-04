@@ -139,9 +139,12 @@ function App() {
         />
       }
 
-      <DeleteAllButton
-        onDeleteAll={onDeleteAll}
-      />
+      {
+        (purchases.length > 0 || friends.length > 0) &&
+        <DeleteAllButton
+          onDeleteAll={onDeleteAll}
+        />
+      }
 
       <div className="versionCode">
         v{process.env.REACT_APP_VERSION}
