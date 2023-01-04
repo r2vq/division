@@ -139,6 +139,10 @@ function App() {
       <DeleteAllButton
         onDeleteAll={onDeleteAll}
       />
+
+      <div className="versionCode">
+        v{process.env.REACT_APP_VERSION}
+      </div>
     </div>
   );
 }
