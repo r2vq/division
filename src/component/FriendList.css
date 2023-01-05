@@ -26,6 +26,7 @@
 
 .friendList .editName {
     display: flex;
+    gap: 10px;
     margin: 8.5px 0;
 }
 
@@ -41,6 +42,7 @@
 .friendListItem {
     display: flex;
     font-size: smaller;
+    gap: 10px;
     padding: 10px 0;
 }
 
@@ -48,7 +50,7 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 10px;
+    font-size: smaller;
     padding: 5px 10px;
 }
 
